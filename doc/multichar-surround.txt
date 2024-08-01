@@ -11,14 +11,14 @@ The following assumes the plugin to be configured with default settings. See
 
 This is a very simple plugin which provides just one lua function intended to
 be called by a keymap in visual mode. For example, the following line creates
-a keymap which calls the function in visual mode (v) with ctrl+s (<C-s>):
+a keymap which calls the function in visual mode (v) with shift+s (S):
 >lua
-  vim.keymap.set("v", "<C-s>", require("multichar-surround").do_surround)
+    vim.keymap.set("v", "S", require("multichar-surround").do_surround)
 <
-Now, upon typing <C-s> in visual mode, you should be prompted on the command
+Now, upon typing "S" in visual mode, you should be prompted on the command
 line:
 
-  Enter right pair:
+    Enter right pair:
 
 If the function detects matching pairs of characters at both ends of your
 visual selection, then they will be automatically filled in to the prompt for
@@ -26,19 +26,19 @@ editing.
 
 That is, if you select the text:
 >lua
-  ({ "Hello World!" })
+    ({ "Hello World!" })
 <
 then you should see the following after triggering `do_surround`:
 
-  Enter right pair: " })
+    Enter right pair: " })
 
 which you can edit as necessary:
 
-  Enter right pair: ']
+    Enter right pair: ']
 
 and hit enter (<CR>) to apply the new text to the buffer:
 >lua
-  ['Hello world']
+    ['Hello world']
 <
 ==============================================================================
 Configuration                                 *multichar-surround-configuration*
@@ -46,28 +46,28 @@ Configuration                                 *multichar-surround-configuration*
 If you like the plugin's defaults, then there's no need to call the setup
 function at all. Otherwise, setup can be called like so
 >lua
-  require("multichar-surround").setup(
-    -- opts table goes here
-  )
+    require("multichar-surround").setup(
+        -- opts table goes here
+    )
 <
 The default opts table looks like this:
 >lua
-  {
-    -- the text to show when prompting the user for input
-    prompt_text = "Edit right pair:", 
+    {
+        -- the text to show when prompting the user for input
+        prompt_text = "Edit right pair:", 
 
-    -- a list of pairs of characters for the purposes of detecting and
-    -- editing surrounding pairs
-    matching_pairs = {
-      { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
-    },
-  }
+        -- a list of pairs of characters for the purposes of detecting and
+        -- editing surrounding pairs
+        matching_pairs = {
+            { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
+        },
+    }
 <
 You can override default values by providing your own values for opts:
 >lua
-  require("multichar-surround").setup({
-    prompt_text = "Custom prompt:",
-  })
+    require("multichar-surround").setup({
+        prompt_text = "Custom prompt:",
+    })
 <
 ==============================================================================
  vim:tw=78:ts=2:et:ft=help:norl:
