@@ -38,16 +38,16 @@ Once you've completed the above setup, you should be able to select some text in
 You can configure the plugin by passing a table to the `setup()` function. For example, if you wanted to redundantly override the default options with the default values:
 
 ```lua
-    require("multichar-surround").setup({
-        -- the text to show when prompting the user for input
-        prompt_text = "Edit right pair:", 
+require("multichar-surround").setup({
+    -- the text to show when prompting the user for input
+    prompt_text = "Edit right pair:", 
 
-        -- a list of pairs of characters for the purposes of detecting and
-        -- editing surrounding pairs
-        matching_pairs = {
-            { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
-        },
-    })
+    -- a list of pairs of characters for the purposes of detecting and
+    -- editing surrounding pairs
+    matching_pairs = {
+        { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
+    },
+})
 ```
 
 # Other surround plugins
