@@ -20,7 +20,7 @@ There are already so many [great plugins](#other-surround-plugins) for surroundi
 vim.keymap.set("v", "S", require("multichar-surround").do_surround)
 ```
 
-The following does both of the above steps if you're using [lazy.nvim](https://github.com/folke/lazy.nvim)
+The following does both of the above steps if you're using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
