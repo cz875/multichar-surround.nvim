@@ -31,7 +31,24 @@ The following does both of the above steps if you're using [lazy.nvim](https://g
 }
 ```
 
-To learn about configuration options, try `:help multichar-surround-configuration` in Neovim with the plugin installed.
+Once you've completed the above setup, you should be able to select some text in visual mode and edit its surrounding characters by pressing "S".
+
+# Configuration
+
+You can configure the plugin by passing a table to the `setup()` function. For example, if you wanted to redundantly override the default options with the default values:
+
+```lua
+    require("multichar-surround").setup({
+        -- the text to show when prompting the user for input
+        prompt_text = "Edit right pair:", 
+
+        -- a list of pairs of characters for the purposes of detecting and
+        -- editing surrounding pairs
+        matching_pairs = {
+            { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
+        },
+    })
+```
 
 # Other surround plugins
 
