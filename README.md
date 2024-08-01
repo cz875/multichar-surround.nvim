@@ -1,6 +1,6 @@
 # multichar-surround.nvim
 
-A simple surround plugin which can edit multiple characters at once.
+A simple Neovim surround plugin for editing multiple characters at once
 
 ![output](https://github.com/user-attachments/assets/7874268a-50bc-4f6d-aac4-a06fd34c378a)
 
