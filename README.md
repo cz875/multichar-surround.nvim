@@ -75,6 +75,10 @@ In `lazy.nvim`, you can (and should) use the `opts` field:
 
 That opts table is then automatically passed into the `setup()` function.
 
+# Contributing
+
+Contributions are always welcome. Feel free to open an issue or submit a PR if you have problems/suggestions.
+
 # Other surround plugins
 
 - [tpope/vim-surround](https://github.com/tpope/vim-surround)
