@@ -13,7 +13,9 @@ This is a very simple plugin which provides just one lua function intended to
 be called by a keymap in visual mode. For example, the following line creates
 a keymap which calls the function in visual mode (v) with shift+s (S):
 >lua
-    vim.keymap.set("v", "S", function() require("multichar-surround").do_surround() end)
+    vim.keymap.set("v", "S", function()
+        require("multichar-surround").do_surround()
+    end)
 <
 Now, upon typing "S" in visual mode, you should be prompted on the command
 line:
@@ -44,7 +46,8 @@ and hit enter (<CR>) to apply the new text to the buffer:
 Configuration                                 *multichar-surround-configuration*
 
 You can configure the plugin by passing a table to the `setup()` function.
-For example, if you wanted to redundantly override the default options with the default values:
+For example, if you wanted to redundantly override the default options with
+the default values:
 >lua
     require("multichar-surround").setup({
         -- the text to show when prompting the user for input
@@ -62,7 +65,9 @@ In `lazy.nvim`, you can (and should) use the `opts` field:
     {
         "cz875/multichar-surround.nvim",
         keys = {
-            { mode = { "x" }, "S", function() require("multichar-surround").do_surround() end }
+            { mode = { "x" }, "S", function()
+                require("multichar-surround").do_surround()
+            end }
         },
         ---@type MulticharSurroundOpts
         opts = {
