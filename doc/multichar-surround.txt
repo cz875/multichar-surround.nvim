@@ -11,9 +11,9 @@ The following assumes the plugin to be configured with default settings. See
 
 This is a very simple plugin which provides just one lua function intended to
 be called by a keymap in visual mode. For example, the following line creates
-a keymap which calls the function in visual mode (v) with shift+s (S):
+a keymap which calls the function in visual mode (x) with shift+s (S):
 >lua
-    vim.keymap.set("v", "S", function()
+    vim.keymap.set("x", "S", function()
         require("multichar-surround").do_surround()
     end)
 <

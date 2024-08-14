@@ -17,7 +17,7 @@ There are already so many [great plugins](#other-surround-plugins) for surroundi
 2. All it does is expose one function, which you can map to whatever key you'd like. In this example, I use <kbd>shift+s</kbd> (<kbd>S</kbd>):
 
 ```lua
-vim.keymap.set("v", "S", function() require("multichar-surround").do_surround() end)
+vim.keymap.set("x", "S", function() require("multichar-surround").do_surround() end)
 ```
 
 The following does both of the above steps if you're using [lazy.nvim](https://github.com/folke/lazy.nvim):
