@@ -10,20 +10,19 @@ The following assumes the plugin to be configured with default settings. See
 |multichar-surround-configuration| for more info.
 
 This is a very simple plugin which provides just one lua function intended to
-be called by a keymap in visual mode. For example, the following line creates
-a keymap which calls the function in visual mode (x) with shift+s (S):
+be called by a keymap in visual mode. For example:
 >lua
     vim.keymap.set("x", "S", function()
         require("multichar-surround").do_surround()
     end)
 <
-Now, upon typing "S" in visual mode, you should be prompted on the command
-line:
+With this keymap, upon typing "S" in visual mode, you should be prompted on the
+command line:
 
     Enter right pair:
 
 If the function detects matching pairs of characters at both ends of your
-visual selection, then they will be automatically filled in to the prompt for
+visual selection, then they will be automatically filled into the prompt for
 editing.
 
 That is, if you select the text:
@@ -32,13 +31,13 @@ That is, if you select the text:
 <
 then you should see the following after triggering `do_surround`:
 
-    Enter right pair: " })
+    Enter right pair:" })
 
 which you can edit as necessary:
 
-    Enter right pair: ']
+    Enter right pair:']
 
-and hit enter (<CR>) to apply the new text to the buffer:
+and hit enter (<CR>) to apply the changes to the buffer:
 >lua
     ['Hello world']
 <
@@ -52,9 +51,12 @@ the default values:
     require("multichar-surround").setup({
         -- the text to show when prompting the user for input
         prompt_text = "Edit right pair:",
-    
-        -- a list of pairs of characters for the purposes of detecting and
-        -- editing surrounding pairs
+
+        -- the highlight group to use for detected balanced pairs
+        hl_group = "MatchParen",
+
+        -- a list of pairs of mirrored characters to be used in
+        -- detection/insertion of balanced pairs
         matching_pairs = {
             { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
         },
@@ -73,9 +75,12 @@ In `lazy.nvim`, you can (and should) use the `opts` field:
         opts = {
             -- the text to show when prompting the user for input
             prompt_text = "Edit right pair:",
-    
-            -- a list of pairs of characters for the purposes of detecting and
-            -- editing surrounding pairs
+
+            -- the highlight group to use for detected balanced pairs
+            hl_group = "MatchParen",
+
+            -- a list of pairs of mirrored characters to be used in
+            -- detection/insertion of balanced pairs
             matching_pairs = {
                 { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
             },

@@ -2,13 +2,57 @@
 
 A simple Neovim surround plugin for editing multiple characters at once
 
-![output](https://github.com/user-attachments/assets/7874268a-50bc-4f6d-aac4-a06fd34c378a)
-
 # Concept
 
-There are already so many [great plugins](#other-surround-plugins) for surrounding text in vim/neovim, so do we really need another? Not necessarily, but I've found the existing solutions to be a bit cumbersome when working with larger clusters of surrounding characters. So, I wrote a helper function for my own convenience, which I've decided to repackage as its own plugin in case anyone else finds it useful.
+There are already so many [great plugins](#other-surround-plugins) for surrounding text in vim/neovim, so why write another? Other plugins are mature, fully featured, and work great for single-character edits, but I've always a convenient way to edit multiple surrounding characters at a time. So, I wrote a helper function for my own convenience, which I've decided to repackage as its own plugin in case anyone else finds it useful.
 
-**I recommend using one of the [existing plugins](#other-surround-plugins)** for single character edits. I use [mini.surround](https://github.com/echasnovski/mini.surround).
+**I recommend using one of the [existing plugins](#other-surround-plugins) for single character edits** I use [mini.surround](https://github.com/echasnovski/mini.surround).
+
+# Usage
+
+This is a very simple plugin which provides just one lua function intended to
+be called by a keymap in visual mode. For example:
+
+```lua
+vim.keymap.set("x", "S", function()
+    require("multichar-surround").do_surround()
+end)
+```
+
+With this keymap, upon typing "S" in visual mode, you should be prompted on the
+command line:
+
+```
+Enter right pair:
+```
+
+If the function detects matching pairs of characters at both ends of your
+visual selection, then they will be automatically filled into the prompt for
+editing.
+
+That is, if you select the text:
+
+```lua
+({ "Hello World!" })
+```
+
+then you should see the following after triggering `do_surround`:
+
+```
+Enter right pair:" })
+```
+
+which you can edit as necessary:
+
+```
+Enter right pair:']
+```
+
+and hit enter (<CR>) to apply the changes to the buffer:
+
+```lua
+['Hello world']
+```
 
 # Installation / Setup
 
@@ -36,15 +80,18 @@ Once you've completed the above setup, you should be able to select some text in
 # Configuration
 
 You can configure the plugin by passing a table to the `setup()` function.
-For example, if you wanted to redundantly override the default options with the default values:
+The default config is as follows:
 
 ```lua
 require("multichar-surround").setup({
     -- the text to show when prompting the user for input
     prompt_text = "Edit right pair:",
 
-    -- a list of pairs of characters for the purposes of detecting and
-    -- editing surrounding pairs
+    -- the highlight group to use for detected balanced pairs
+    hl_group = "MatchParen",
+
+    -- a list of pairs of mirrored characters to be used in
+    -- detection/insertion of balanced pairs
     matching_pairs = {
         { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
     },
@@ -64,8 +111,11 @@ In `lazy.nvim`, you can (and should) use the `opts` field:
         -- the text to show when prompting the user for input
         prompt_text = "Edit right pair:",
 
-        -- a list of pairs of characters for the purposes of detecting and
-        -- editing surrounding pairs
+        -- the highlight group to use for detected balanced pairs
+        hl_group = "MatchParen",
+
+        -- a list of pairs of mirrored characters to be used in
+        -- detection/insertion of balanced pairs
         matching_pairs = {
             { "(", ")" }, { "[", "]" }, { "{", "}" }, { "<", ">" }
         },
