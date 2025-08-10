@@ -294,7 +294,4 @@ H.get_cursor = function()
   return {row, col}
 end
 
--- return multichar_surround
-vim.keymap.set("x", "S", function()
-  multichar_surround.do_surround()
-end)
+return multichar_surround
