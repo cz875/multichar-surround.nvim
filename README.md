@@ -1,14 +1,14 @@
-# multichar-surround.nvim
+### multichar-surround.nvim
 
 A simple Neovim surround plugin for editing multiple characters at once
 
-# Concept
+### Concept
 
 There are already so many [great plugins](#other-surround-plugins) for surrounding text in vim/neovim, so why write another? Other plugins are mature, fully featured, and work great for single-character edits, but I've always a convenient way to edit multiple surrounding characters at a time. So, I wrote a helper function for my own convenience, which I've decided to repackage as its own plugin in case anyone else finds it useful.
 
 **I recommend using one of the [existing plugins](#other-surround-plugins) for single character edits** I use [mini.surround](https://github.com/echasnovski/mini.surround).
 
-# Usage
+### Usage
 
 This is a very simple plugin which provides just one lua function intended to
 be called by a keymap in visual mode. For example:
@@ -54,7 +54,7 @@ and hit enter (<CR>) to apply the changes to the buffer:
 ['Hello world']
 ```
 
-# Installation / Setup
+### Installation / Setup
 
 1. Install the plugin with your favorite plugin manager.
 
@@ -77,7 +77,7 @@ The following does both of the above steps if you're using [lazy.nvim](https://g
 
 Once you've completed the above setup, you should be able to select some text in visual mode and edit its surrounding characters by pressing <kbd>S</kbd>.
 
-# Configuration
+### Configuration
 
 You can configure the plugin by passing a table to the `setup()` function.
 The default config is as follows:
@@ -125,11 +125,11 @@ In `lazy.nvim`, you can (and should) use the `opts` field:
 
 That opts table is then automatically passed into the `setup()` function.
 
-# Contributing
+### Contributing
 
 Contributions are always welcome. Feel free to open an issue or submit a PR if you have problems/suggestions.
 
-# Other surround plugins
+### Other surround plugins
 
 - [tpope/vim-surround](https://github.com/tpope/vim-surround)
 - [machakann/vim-sandwich](https://github.com/machakann/vim-sandwich)
